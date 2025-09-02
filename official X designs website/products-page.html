@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XDesigns - Projects</title>
+
+  <link rel="icon" type="image/png" href="images/XDesigns fav icon.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      min-height: 25px;
+    }
+
+    nav {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    #darkModeBtn {
+      background: #ff5722;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    #darkModeBtn:hover {
+      background: #ff9800;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ff5722;
+      text-align: center;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .contact-card {
+      background: #fff;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s, color 0.4s;
+
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .project-content p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .project-content a {
+      text-decoration: none;
+      color: #ff5722;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .project-content a:hover {
+      color: #ff9800;
+    }
+
+    footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #ff5722;
+      color: #fff;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    #topBtn:hover {
+      background: #ff9800;
+    }
+
+    body.dark-mode {
+      background: #121212;
+      color: #f4f4f4;
+    }
+
+    body.dark-mode nav {
+      background: #111;
+    }
+
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+
+    body.dark-mode nav a:hover {
+      color: #ff9800;
+    }
+
+    body.dark-mode .project-card {
+      background: #1e1e1e;
+      color: #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    body.dark-mode .contact-card {
+      background: #1e1e1e;
+      color: #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    body.dark-mode footer {
+      background: #111;
+      color: #bbb;
+    }
+
+    header {
+  position: relative;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: #fff;
+  padding: 60px 20px 40px; /* extra padding for spacing */
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+header .logo {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  height: 150px;
+  width: 200;
+}
+
+.header-text {
+  margin-top: 20px;
+}
+
+
+    @media(max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      nav {
+        flex-direction: column;
+      }
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+      .container {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/XDesigns_logo-removebg-preview.png" alt="XDesigns Logo" class="logo">
+    <div class="container">
+      <h1>XDesigns</h1>
+      <p id="typing"></p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home-page.html">Home</a>
+    <a href="#products-page.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+  </nav>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Our Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/Domcol Media.png">
+          <div class="project-content">
+            <h3>Project 1</h3>
+            <p>A modern logo design.</p>
+        <a href="view-details-of-prodicts.html?id=1">View Product →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/XDesigns fav icon.png" alt="Project 2">
+          <div class="project-content">
+            <h3>Project 2</h3>
+            <p>XDesigns fav icon.</p>
+            <a href="view-details-of-prodicts.html?id=2">View Project →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/XDesigns logo.png" alt="Project 3">
+          <div class="project-content">
+            <h3>Project 3</h3>
+            <p>XDesigns logo.</p>
+            <a href="view-details-of-prodicts.html?id=3">View Product →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/ModGuard Discord Bot Dashboard.png" alt="Project 4">
+          <div class="project-content">
+            <h3>Project 4</h3>
+            <p>Mobile-friendly landing page with interactive animations.</p>
+          <a href="view-details-of-prodicts.html?id=4">View Product →</a>
+          </div>
+        </div>
+    <div class="project-card">
+          <img src="images/CCM AUTO & LOGISTICS.png new official.png" alt="Project 5">
+          <div class="project-content">
+            <h3>Project 5</h3>
+            <p>Mobile-fiendly landing page with interactive animations.</p>
+          <a href="view-details-of-prodicts.html?id=5">View Product →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/CCM AUTO & LOGISTICS.png  official.png" alt="Project 6">
+          <div class="project-content">
+            <h3>Project 6</h3>
+            <p>Mobile-friendly landing page with interactive animations.</p>
+          <a href="view-details-of-prodicts.html?id=6">View Product →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 XDesigns. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button id="topBtn">↑</button>
+
+  <script>
+    const typingElement = document.getElementById("typing");
+    const textArray = [" View our Projects", "Creative Designs and", "Innovative Works."];
+    let textIndex = 0;
+    let charIndex = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function typeEffect() {
+      currentText = textArray[textIndex];
+      typingElement.textContent = isDeleting
+        ? currentText.substring(0, charIndex--)
+        : currentText.substring(0, charIndex++);
+
+      if (!isDeleting && charIndex === currentText.length + 1) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length;
+        setTimeout(typeEffect, 500);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 60 : 120);
+      }
+    }
+    typeEffect();
+
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        darkModeBtn.textContent = "☀️ Light Mode";
+      } else {
+        darkModeBtn.textContent = "🌙 Dark Mode";
+      }
+    });
+  </script>
+</body>
+</html>

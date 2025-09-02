@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Product - XDesigns</title>
+
+  <link rel="icon" type="image/png" href="images/XDesigns fav icon.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    #darkModeBtn {
+      background: #ff5722;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    #darkModeBtn:hover { background: #ff9800; }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .product-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .product-view img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+
+    .product-view h2 {
+      color: #ff5722;
+      margin-bottom: 15px;
+    }
+
+    .product-view p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ff5722;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #ff9800;
+    }
+
+    footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    header {
+  position: relative;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: #fff;
+  padding: 60px 20px 40px; /* extra padding for spacing */
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+header .logo {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  height: 150px;
+  width: 200;
+}
+
+.header-text {
+  margin-top: 20px;
+}
+
+
+    /* Dark mode */
+    body.dark-mode { background: #121212; color: #f4f4f4; }
+    body.dark-mode nav { background: #111; }
+    body.dark-mode nav a { color: #ddd; }
+    body.dark-mode nav a:hover { color: #ff9800; }
+    body.dark-mode .product-view { background: #1e1e1e; color: #ddd; }
+    body.dark-mode footer { background: #111; color: #bbb; }
+
+    @media(max-width: 768px) {
+      .product-view img { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/XDesigns_logo-removebg-preview.png" alt="XDesigns Logo" class="logo">
+    <h1>Product Details</h1>
+  </header>
+
+  <nav>
+    <a href="landing-page.html">Home</a>
+    <a href="products-page.html">Products</a>
+    <a href="contact.html">Products</a>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+  </nav>
+
+  <section class="container">
+    <div class="product-view" id="productDetails">
+      <!-- Product info loads here -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 XDesigns. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Product data
+    const products = [
+      {
+        id: 1,
+        name: "Product One",
+        description: "This is a detailed description of Product One. It has amazing features and high quality.",
+        image: "images/Domcol Media.png"
+      },
+      {
+        id: 2,
+        name: "Product Two",
+        description: "Product Two is designed with style and performance in mind.",
+        image: "images/XDesigns fav icon.png"
+      },
+      {
+        id: 3,
+        name: "Product Three",
+        description: "Product Three offers durability and elegance combined.",
+        image: "images/XDesigns logo.png"
+      },
+      {
+        id: 4,
+        name: "Product four",
+        description: "Mobile-friendly landing page with interactive animations.",
+        image: "images/ModGuard Discord Bot Dashboard.png"
+      },
+      {
+        id: 5,
+        name: "Product five",
+        description: "Product Three offers durability and elegance combined.",
+        image: "images/CCM AUTO & LOGISTICS.png new official.png"
+      },
+      {
+        id: 6,
+        name: "Product six",
+        description: "Product Three offers durability and elegance combined.",
+        image: "images/CCM AUTO & LOGISTICS.png official.png"
+      }
+    ];
+
+    // Get product ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+
+    // Find product
+    const product = products.find(p => p.id === productId);
+
+    const detailsContainer = document.getElementById("productDetails");
+
+    if(product) {
+      detailsContainer.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <a href="products-page.html" class="back-btn">← Back to Products</a>
+      `;
+    } else {
+      detailsContainer.innerHTML = `
+        <h2>Product Not Found</h2>
+        <a href="products-page.html" class="back-btn">← Back to Products</a>
+      `;
+    }
+
+    // Dark mode toggle
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      darkModeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+  </script>
+</body>
+</html>

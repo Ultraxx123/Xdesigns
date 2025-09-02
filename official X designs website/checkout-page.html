@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - XDesigns</title>
+
+  <link rel="icon" type="image/png" href="images/XDesigns fav icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+
+    #darkModeBtn {
+      background: #ff5722;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    #darkModeBtn:hover {
+      background: #ff9800;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background: #121212;
+      color: #f4f4f4;
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #222, #111);
+    }
+
+    body.dark-mode .checkout-container {
+      background: #1e1e1e;
+      color: #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    body.dark-mode table th {
+      background: #222;
+      color: #ff9800;
+    }
+
+    body.dark-mode table td {
+      border-bottom: 1px solid #444;
+    }
+
+    body.dark-mode .total {
+      color: #ff9800;
+    }
+
+    body.dark-mode footer {
+      background: #111;
+      color: #bbb;
+    }
+
+    /* Checkout styles */
+    .checkout-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+    h2 {
+      color: #ff5722;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    th {
+      background: #f4f7fa;
+    }
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+    .checkout-btn {
+      display: inline-block;
+      background: #ff5722;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .checkout-btn:hover {
+      background: #ff9800;
+    }
+    footer {
+      text-align: center;
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      margin-top: 40px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    body.dark-mode nav {
+      background: #111;
+    }
+
+    body.dark-mode nav a {
+      color: #ddd;
+    }
+
+    body.dark-mode nav a:hover {
+      color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Checkout</h1>
+    <p>Review your designs before payment</p>
+  </header>
+
+  <nav>
+    <a href="home-page.html">Home</a>
+    <a href="products-page.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="checkout-container">
+    <h2>Your Cart</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Price (₦)</th>
+          <th>Quantity</th>
+          <th>Total (₦)</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Items will load here with JS -->
+      </tbody>
+    </table>
+
+    <div class="total">
+      <strong>Grand Total: ₦<span id="grand-total">0</span></strong>
+    </div>
+
+    <a href="#" class="checkout-btn" id="pay-now">Proceed to Payment</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 XDesigns. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Example cart data
+    const cart = [
+      { name: "Logo Design", price: 15000, quantity: 1 },
+      { name: "Flyer Design", price: 10000, quantity: 2 }
+    ];
+
+    const cartItemsContainer = document.getElementById("cart-items");
+    const grandTotalEl = document.getElementById("grand-total");
+    let grandTotal = 0;
+
+    cart.forEach(item => {
+      const total = item.price * item.quantity;
+      grandTotal += total;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>₦${item.price.toLocaleString()}</td>
+        <td>${item.quantity}</td>
+        <td>₦${total.toLocaleString()}</td>
+      `;
+      cartItemsContainer.appendChild(row);
+    });
+
+    grandTotalEl.textContent = grandTotal.toLocaleString();
+
+    document.getElementById("pay-now").addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("Payment integration coming soon! 💳");
+      // Paystack/Flutterwave can be added here
+    });
+
+    // Dark mode toggle
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        darkModeBtn.textContent = "☀️ Light Mode";
+      } else {
+        darkModeBtn.textContent = "🌙 Dark Mode";
+      }
+    });
+  </script>
+
+</body>
+</html>
